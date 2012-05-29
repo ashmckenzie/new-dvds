@@ -1,0 +1,15 @@
+<article>
+
+  <div class="image">
+    <img src="<%= movie.image %>" title="<%= movie.title %>" alt="<%= movie.title %>" />
+  </div>
+
+  <div class="description">
+    <h1><a href="<%= movie.link %>" title="<%= movie.title %>" target="_blank"><%= movie.title %>, <%= movie.year %></a></h1>
+    <h2>Released <%= movie.dvd_release_date.strftime("%d/%m/%Y") %></h2>
+    <h3>Critics <%= movie.critics_score %>%, Audience <%= movie.audience_score %>% </h3>
+    <p><%= movie.cast.join(", ") %></p>
+    <p><%= movie.synopsis %></p>
+  </div>
+
+</article>

@@ -1,3 +1,4 @@
+require 'json'
 require 'active_support/time'
 
 $BASE_CONFIG = RecursiveOpenStruct.new YAML.load_file('config/config.yml')

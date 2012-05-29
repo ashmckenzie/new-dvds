@@ -33,5 +33,5 @@ $logger.level = :debug if $DEBUG_ON
 debug_log(opts)
 
 Errbit.endeavour(Exception, 0) do |try|
-  NewDvds.email
+  NewDvds.notify
 end
