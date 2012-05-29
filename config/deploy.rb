@@ -11,7 +11,7 @@ require 'yaml'
 
 CONFIG = YAML.load_file('config/config.yml')
 
-set :application, "New DVD's"
+set :application, "New DVDs"
 set :repository, CONFIG['deploy']['repo']
 
 set :scm, :git
