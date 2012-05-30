@@ -58,7 +58,7 @@ module NewDvds
         filename = Tempfile.new(['new-dvds', '.html'])
         File.open(filename, 'w') { |f| f.write(body) }
         `open #{filename.path}`
-        sleep(2)
+        sleep(2)  # so the browser has a chance to render :)
       end
     end
   end
