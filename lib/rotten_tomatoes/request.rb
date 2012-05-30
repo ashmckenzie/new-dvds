@@ -23,11 +23,7 @@ module RottenTomatoes
     end
 
     def get url
-      File.read("./tmp/new_releases_#{url.page_number}.json")
+      RestClient.get(url.to_s)
     end
-
-    # def get url
-    #   RestClient.get(url.to_s)
-    # end
   end
 end
