@@ -14,7 +14,7 @@ module RottenTomatoes
 
     def each &block
       @responses.each(&block)
-    end    
+    end
 
     private
 
@@ -22,12 +22,12 @@ module RottenTomatoes
       ((@responses.first['total'].to_f / url.page_limit.to_f).to_f.ceil) >= url.page_number
     end
 
-    # def get url
-    #   File.read("./tmp/new_releases_#{url.page_number}.json")
-    # end
-
     def get url
-      RestClient.get(url.to_s)
+      File.read("./tmp/new_releases_#{url.page_number}.json")
     end
+
+    # def get url
+    #   RestClient.get(url.to_s)
+    # end
   end
 end

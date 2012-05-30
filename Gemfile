@@ -12,6 +12,8 @@ gem 'awesome_print'
 gem 'mail'
 gem 'inline-style'
 gem 'rest-client'
+gem 'bson_ext'
+gem 'mongoid'
 
 group :development do
   gem 'pry'

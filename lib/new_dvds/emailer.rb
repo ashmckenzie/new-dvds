@@ -4,6 +4,7 @@ module NewDvds
     attr_reader :movies
 
     def self.transmit movies
+      return false if movies.empty?
       new(movies).transmit
     end
 

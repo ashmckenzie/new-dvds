@@ -1,14 +1,24 @@
 module NewDvds
   class Movie
+    include Mongoid::Document
+    store_in :movies
+
+    field :id, type: Integer
 
     attr_reader :detail
 
     def initialize hash
       @detail = RecursiveOpenStruct.new hash
+
+      super({ :movie_id => id })
+    end
+
+    def to_s
+      "##{id}: #{title}, #{year}"
     end
 
     def id
-      detail.id
+      detail.id.to_i
     end
 
     def link

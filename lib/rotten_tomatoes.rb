@@ -5,10 +5,27 @@ module RottenTomatoes
   end    
 
   def self.new_dvd_releases
+    releases = []
     url = Url.new('/lists/dvds/new_releases.json')
 
-    Request.new(url).collect do |page|
-      page['movies'].collect { |m| NewDvds::Movie.new(m) }
-    end.flatten
+    Request.new(url).each do |page|
+      page['movies'].each do |m|
+        movie = NewDvds::Movie.new(m)
+        unless $DRY_ON
+          $logger.debug "Checking #{movie}"
+          unless NewDvds::Movie.exists?(conditions: { movie_id: movie.id })
+            movie.save
+            releases << movie
+            $logger.info "Added to releases - #{movie}"
+          else
+            $logger.debug "Movie already exists - #{movie}"
+          end
+        else
+          releases << movie
+        end
+      end
+    end
+
+    releases.flatten
   end
 end
